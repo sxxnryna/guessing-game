@@ -2,27 +2,25 @@ class GuessingGame {
   constructor() {
     this.min = 0;
     this.max = 0;
-    this.currentGuess = 0;
+    this.middle = 0;
   }
 
   setRange(min, max) {
     this.min = min;
     this.max = max;
-    this.currentGuess = this.min + Math.floor((this.max - this.min) / 2);
   }
 
   guess() {
-    return this.currentGuess;
+    this.middle = Math.round((this.max + this.min) / 2);
+    return this.middle;
   }
 
   lower() {
-    this.max = this.currentGuess; // Уменьшаем верхнюю границу
-    this.currentGuess = this.min + Math.floor((this.max - this.min) / 2); // Новое предположение
+    this.max = this.middle;
   }
 
   greater() {
-    this.min = this.currentGuess + 1; // Увеличиваем нижнюю границу
-    this.currentGuess = this.min + Math.floor((this.max - this.min) / 2); // Новое предположение
+    this.min = this.middle;
   }
 }
 
