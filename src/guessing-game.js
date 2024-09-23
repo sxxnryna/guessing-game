@@ -8,7 +8,7 @@ class GuessingGame {
   setRange(min, max) {
     this.min = min;
     this.max = max;
-    this.currentGuess = Math.floor((min + max) / 2); // Начальный предположение
+    this.currentGuess = this.min + Math.floor((this.max - this.min) / 2); // Начальное предположение
   }
 
   guess() {
@@ -17,13 +17,13 @@ class GuessingGame {
 
   lower() {
     this.max = this.currentGuess; // Уменьшаем максимальное значение
-    this.currentGuess = Math.floor((this.min + this.max) / 2); // Новое предположение
+    this.currentGuess = this.min + Math.floor((this.max - this.min) / 2); // Новое предположение
   }
 
   greater() {
-    this.min = this.currentGuess; // Увеличиваем минимальное значение
-    this.currentGuess = Math.floor((this.min + this.max) / 2); // Новое предположение
+    this.min = this.currentGuess + 1; // Увеличиваем минимальное значение
+    this.currentGuess = this.min + Math.floor((this.max - this.min) / 2); // Новое предположение
   }
 }
 
-module.exports = GuessingGame; // Экспортируем класс
+module.exports = GuessingGame;
